@@ -2,15 +2,20 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-let isConnected = false;
-async function connectDB() {
-  if (isConnected && mongoose.connection.readyState === 1) return;
-  await mongoose.connect(process.env.MONGO_URI, {
-    serverSelectionTimeoutMS: 10000,
-    connectTimeoutMS: 10000,
-    socketTimeoutMS: 30000,
-  });
-  isConnected = true;
+mongoose.set('bufferCommands', false);
+
+let connectionPromise = null;
+function connectDB() {
+  if (!connectionPromise) {
+    connectionPromise = mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 15000,
+      connectTimeoutMS: 15000,
+    }).catch((err) => {
+      connectionPromise = null;
+      throw err;
+    });
+  }
+  return connectionPromise;
 }
 
 const app = express();
