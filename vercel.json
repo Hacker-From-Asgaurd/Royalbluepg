@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "buildCommand": "cd royal-blue-main/client && npm install && npm run build",
+  "outputDirectory": "royal-blue-main/client/dist",
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.js" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
