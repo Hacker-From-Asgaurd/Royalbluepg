@@ -23,6 +23,19 @@ app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/api/debug', async (req, res) => {
+  try {
+    await connectDB();
+    res.json({ 
+      state: mongoose.connection.readyState,
+      hasUri: !!process.env.MONGO_URI,
+      uriStart: process.env.MONGO_URI ? process.env.MONGO_URI.substring(0, 30) : 'MISSING'
+    });
+  } catch (err) {
+    res.json({ error: err.message, hasUri: !!process.env.MONGO_URI });
+  }
+});
+
 app.use(async (req, res, next) => {
   try {
     await connectDB();
