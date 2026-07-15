@@ -2,6 +2,11 @@
   "version": 2,
   "buildCommand": "cd royal-blue-main/client && npm install && npm run build",
   "outputDirectory": "royal-blue-main/client/dist",
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30
+    }
+  },
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/index.js" },
     { "handle": "filesystem" },
