@@ -1,24 +1,24 @@
 const express = require('express');
 const cors = require('cors');
 
-// Use the server's mongoose instance — same one the models use
 const mongoose = require('../royal-blue-main/server/node_modules/mongoose');
 
 let cached = global.mongoose;
 if (!cached) cached = global.mongoose = { conn: null, promise: null };
 
-async function connectDB() {
-  if (cached.conn) return cached.conn;
+function connectDB() {
+  if (cached.conn) return Promise.resolve(cached.conn);
   if (!cached.promise) {
     cached.promise = mongoose.connect(process.env.MONGO_URI, {
       serverSelectionTimeoutMS: 25000,
       connectTimeoutMS: 25000,
-      bufferTimeoutMS: 25000,
-    });
+    }).then((conn) => { cached.conn = conn; return conn; });
   }
-  cached.conn = await cached.promise;
-  return cached.conn;
+  return cached.promise;
 }
+
+// Start connecting immediately at module load (warm up on cold start)
+connectDB().catch((err) => console.error('Initial DB connect error:', err.message));
 
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
