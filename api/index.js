@@ -9,11 +9,11 @@ app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Connect once at module load — Vercel reuses warm instances
+// Single connection promise — no .catch() so errors propagate
 const dbPromise = mongoose.connect(process.env.MONGO_URI, {
-  serverSelectionTimeoutMS: 20000,
-  connectTimeoutMS: 20000,
-}).catch(err => console.error('MongoDB connection error:', err.message));
+  serverSelectionTimeoutMS: 25000,
+  connectTimeoutMS: 25000,
+});
 
 app.use(async (req, res, next) => {
   try {
