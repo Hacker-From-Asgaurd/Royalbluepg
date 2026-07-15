@@ -23,21 +23,18 @@ app.use(async (req, res, next) => {
   }
 });
 
-try {
-  app.use('/api/auth',         require('./royal-blue-main/server/routes/authRoutes'));
-  app.use('/api/gallery',      require('./royal-blue-main/server/routes/galleryRoutes'));
-  app.use('/api/amenities',    require('./royal-blue-main/server/routes/amenityRoutes'));
-  app.use('/api/enquiries',    require('./royal-blue-main/server/routes/enquiryRoutes'));
-  app.use('/api/testimonials', require('./royal-blue-main/server/routes/testimonialRoutes'));
-  app.use('/api/faqs',         require('./royal-blue-main/server/routes/faqRoutes'));
-  app.use('/api/content',      require('./royal-blue-main/server/routes/contentRoutes'));
-  app.use(require('./royal-blue-main/server/middleware/errorHandler'));
-} catch (e) {
-  app.use((req, res) => res.status(500).json({ success: false, message: e.message, stack: e.stack }));
-}
+app.use('/api/auth',         require('../royal-blue-main/server/routes/authRoutes'));
+app.use('/api/gallery',      require('../royal-blue-main/server/routes/galleryRoutes'));
+app.use('/api/amenities',    require('../royal-blue-main/server/routes/amenityRoutes'));
+app.use('/api/enquiries',    require('../royal-blue-main/server/routes/enquiryRoutes'));
+app.use('/api/testimonials', require('../royal-blue-main/server/routes/testimonialRoutes'));
+app.use('/api/faqs',         require('../royal-blue-main/server/routes/faqRoutes'));
+app.use('/api/content',      require('../royal-blue-main/server/routes/contentRoutes'));
 
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Royal Blue PG API is running', timestamp: new Date() });
 });
+
+app.use(require('../royal-blue-main/server/middleware/errorHandler'));
 
 module.exports = app;
