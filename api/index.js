@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -11,7 +10,6 @@ async function connectDB() {
 }
 
 const app = express();
-
 app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
