@@ -2,22 +2,31 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-mongoose.set('bufferCommands', false);
+// Keep buffering ON — disable was causing the issue
+let cached = global.mongoose;
+if (!cached) cached = global.mongoose = { conn: null, promise: null };
+
+async function connectDB() {
+  if (cached.conn) return cached.conn;
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 25000,
+      connectTimeoutMS: 25000,
+      maxPoolSize: 10,
+    });
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
 
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Single connection promise — no .catch() so errors propagate
-const dbPromise = mongoose.connect(process.env.MONGO_URI, {
-  serverSelectionTimeoutMS: 25000,
-  connectTimeoutMS: 25000,
-});
-
 app.use(async (req, res, next) => {
   try {
-    await dbPromise;
+    await connectDB();
     next();
   } catch (err) {
     res.status(500).json({ success: false, message: 'Database connection failed: ' + err.message });

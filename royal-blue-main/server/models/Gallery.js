@@ -10,6 +10,6 @@ const gallerySchema = new mongoose.Schema({
   },
   caption: { type: String, default: '' },
   order: { type: Number, default: 0 },
-}, { timestamps: true, bufferCommands: false });
+}, { timestamps: true });
 
 module.exports = mongoose.model('Gallery', gallerySchema);

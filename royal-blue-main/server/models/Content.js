@@ -4,7 +4,7 @@ const contentSchema = new mongoose.Schema({
   section: { type: String, required: true }, // e.g., 'hero', 'about', 'contact'
   key: { type: String, required: true },     // e.g., 'title', 'subtitle', 'phone'
   value: { type: String, required: true },
-}, { timestamps: true, bufferCommands: false });
+}, { timestamps: true });
 
 // Compound unique index
 contentSchema.index({ section: 1, key: 1 }, { unique: true });

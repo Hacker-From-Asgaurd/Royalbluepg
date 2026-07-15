@@ -12,6 +12,6 @@ const enquirySchema = new mongoose.Schema({
   message: { type: String },
   privacyPolicy: { type: Boolean, default: false },
   status: { type: String, default: 'new', enum: ['new', 'contacted', 'resolved', 'rejected'] },
-}, { timestamps: true, bufferCommands: false });
+}, { timestamps: true });
 
 module.exports = mongoose.model('Enquiry', enquirySchema);
