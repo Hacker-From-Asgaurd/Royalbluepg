@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 
-mongoose.set('bufferTimeoutMS', 25000);
+// Use the server's mongoose instance — same one the models use
+const mongoose = require('../royal-blue-main/server/node_modules/mongoose');
+
 let cached = global.mongoose;
 if (!cached) cached = global.mongoose = { conn: null, promise: null };
 
@@ -12,7 +13,7 @@ async function connectDB() {
     cached.promise = mongoose.connect(process.env.MONGO_URI, {
       serverSelectionTimeoutMS: 25000,
       connectTimeoutMS: 25000,
-      maxPoolSize: 10,
+      bufferTimeoutMS: 25000,
     });
   }
   cached.conn = await cached.promise;
