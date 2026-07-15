@@ -18,9 +18,6 @@ const dbPromise = mongoose.connect(process.env.MONGO_URI, {
 app.use(async (req, res, next) => {
   try {
     await dbPromise;
-    if (mongoose.connection.readyState !== 1) {
-      return res.status(500).json({ success: false, message: 'Database not connected' });
-    }
     next();
   } catch (err) {
     res.status(500).json({ success: false, message: 'Database connection failed: ' + err.message });
