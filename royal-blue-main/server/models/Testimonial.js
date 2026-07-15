@@ -8,6 +8,6 @@ const testimonialSchema = new mongoose.Schema({
   review: { type: String, required: true },
   college: { type: String },
   isActive: { type: Boolean, default: true },
-}, { timestamps: true });
+}, { timestamps: true, bufferCommands: false });
 
 module.exports = mongoose.model('Testimonial', testimonialSchema);
