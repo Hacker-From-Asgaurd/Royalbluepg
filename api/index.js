@@ -4,20 +4,6 @@ const mongoose = require('mongoose');
 
 mongoose.set('bufferCommands', false);
 
-let connectionPromise = null;
-function connectDB() {
-  if (!connectionPromise) {
-    connectionPromise = mongoose.connect(process.env.MONGO_URI, {
-      serverSelectionTimeoutMS: 15000,
-      connectTimeoutMS: 15000,
-    }).catch((err) => {
-      connectionPromise = null;
-      throw err;
-    });
-  }
-  return connectionPromise;
-}
-
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
@@ -25,20 +11,26 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/api/debug', async (req, res) => {
   try {
-    await connectDB();
-    res.json({ 
-      state: mongoose.connection.readyState,
-      hasUri: !!process.env.MONGO_URI,
-      uriStart: process.env.MONGO_URI ? process.env.MONGO_URI.substring(0, 30) : 'MISSING'
-    });
+    if (mongoose.connection.readyState !== 1) {
+      await mongoose.connect(process.env.MONGO_URI, {
+        serverSelectionTimeoutMS: 20000,
+        connectTimeoutMS: 20000,
+      });
+    }
+    res.json({ state: mongoose.connection.readyState, hasUri: !!process.env.MONGO_URI });
   } catch (err) {
-    res.json({ error: err.message, hasUri: !!process.env.MONGO_URI });
+    res.json({ error: err.message, hasUri: !!process.env.MONGO_URI, uriStart: process.env.MONGO_URI?.substring(0, 40) });
   }
 });
 
 app.use(async (req, res, next) => {
   try {
-    await connectDB();
+    if (mongoose.connection.readyState !== 1) {
+      await mongoose.connect(process.env.MONGO_URI, {
+        serverSelectionTimeoutMS: 20000,
+        connectTimeoutMS: 20000,
+      });
+    }
     next();
   } catch (err) {
     res.status(500).json({ success: false, message: 'Database connection failed: ' + err.message });
