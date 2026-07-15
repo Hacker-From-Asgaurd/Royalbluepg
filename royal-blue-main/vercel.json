@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "framework": "vite",
-  "installCommand": "cd royal-blue-main/client && npm install",
-  "buildCommand": "cd royal-blue-main/client && npm run build",
+  "buildCommand": "cd royal-blue-main/client && npm install && npm run build",
   "outputDirectory": "royal-blue-main/client/dist",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 30
     }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.js" },
+    { "source": "/(.*)",     "destination": "/index.html" }
   ]
 }

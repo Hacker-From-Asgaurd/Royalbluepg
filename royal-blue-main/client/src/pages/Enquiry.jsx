@@ -24,7 +24,7 @@ const Enquiry = () => {
   const formik = useFormik({
     initialValues: {
       fullName: '', phone: '', email: '', college: '',
-      occupation: 'Student', message: '', privacyPolicy: false
+      occupation: 'Student', roomPreference: 'Any', moveInDate: '', duration: '', message: '', privacyPolicy: false
     },
     validationSchema: enquirySchema,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
@@ -135,6 +135,38 @@ const Enquiry = () => {
                       name="college"
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg focus:ring-2 focus:ring-primary-500 outline-none transition-all dark:text-white"
                       {...formik.getFieldProps('college')}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Room Preference</label>
+                    <select
+                      name="roomPreference"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg focus:ring-2 focus:ring-primary-500 outline-none transition-all dark:text-white"
+                      {...formik.getFieldProps('roomPreference')}
+                    >
+                      <option value="Any">Any</option>
+                      <option value="Double Sharing">Double Sharing</option>
+                      <option value="Triple Sharing">Triple Sharing</option>
+                      <option value="Premium AC Room">Premium AC Room</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Preferred Move-in Date</label>
+                    <input
+                      type="date"
+                      name="moveInDate"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg focus:ring-2 focus:ring-primary-500 outline-none transition-all dark:text-white"
+                      {...formik.getFieldProps('moveInDate')}
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Expected Duration of Stay</label>
+                    <input
+                      type="text"
+                      name="duration"
+                      placeholder="e.g. 6 months, 1 year"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg focus:ring-2 focus:ring-primary-500 outline-none transition-all dark:text-white"
+                      {...formik.getFieldProps('duration')}
                     />
                   </div>
                 </div>

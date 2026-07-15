@@ -8,10 +8,7 @@ module.exports = async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    return res.status(200).json({
-      success: true,
-      message: 'Enquiries API is running',
-    });
+    return res.status(200).json({ success: true, message: 'Enquiries API is running' });
   }
 
   if (req.method !== 'POST') {
@@ -21,24 +18,15 @@ module.exports = async function handler(req, res) {
   const { fullName, phone, email, college, occupation, message, privacyPolicy } = req.body || {};
 
   if (!fullName || !phone || !email || !occupation) {
-    return res.status(400).json({
-      success: false,
-      message: 'Please fill the required fields before submitting.',
-    });
+    return res.status(400).json({ success: false, message: 'Please fill the required fields before submitting.' });
   }
 
   if (!/^[0-9]{10}$/.test(phone)) {
-    return res.status(400).json({
-      success: false,
-      message: 'Phone number must be 10 digits.',
-    });
+    return res.status(400).json({ success: false, message: 'Phone number must be 10 digits.' });
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return res.status(400).json({
-      success: false,
-      message: 'Please provide a valid email address.',
-    });
+    return res.status(400).json({ success: false, message: 'Please provide a valid email address.' });
   }
 
   return res.status(201).json({
