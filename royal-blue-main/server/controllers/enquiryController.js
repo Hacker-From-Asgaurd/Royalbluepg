@@ -27,34 +27,25 @@ exports.submitEnquiry = async (req, res) => {
     const contactContent = await Content.findOne({ section: 'contact', key: 'email' });
     const recipientEmail = contactContent?.value || process.env.ADMIN_EMAIL;
 
-    // Send email notification to the configured contact address (non-blocking)
-    try {
-      await transporter.sendMail({
-        from: `"Royal Blue PG" <${process.env.SMTP_USER}>`,
-        to: recipientEmail,
-        subject: `New Enquiry from ${enquiry.fullName}`,
-        html: `
-          <p>Hello,</p>
-          <p>You have received a new enquiry through the Royal Blue PG website. The details are as follows:</p>
-          <ul>
-            <li><strong>Name:</strong> ${escapeHtml(enquiry.fullName)}</li>
-            <li><strong>Email:</strong> ${escapeHtml(enquiry.email)}</li>
-            <li><strong>Phone Number:</strong> ${escapeHtml(enquiry.phone)}</li>
-            <li><strong>College Name:</strong> ${escapeHtml(enquiry.college || 'N/A')}</li>
-            <li><strong>Additional Message:</strong> ${escapeHtml(enquiry.message || 'N/A')}</li>
-          </ul>
-          <p>Please review the enquiry and contact the customer at your earliest convenience to provide further information regarding accommodation availability, facilities, pricing, and the admission process.</p>
-          <p>Thank you.</p>
-          <p>
-            Best Regards,<br/>
-            Royal Blue PG Website<br/>
-            <em>Automated Enquiry Notification.</em>
-          </p>
-        `,
-      });
-    } catch (emailError) {
-      console.error('Email notification failed:', emailError.message, emailError);
-    }
+    // Send email notification (fire-and-forget — do not await)
+    transporter.sendMail({
+      from: `"Royal Blue PG" <${process.env.SMTP_USER}>`,
+      to: recipientEmail,
+      subject: `New Enquiry from ${enquiry.fullName}`,
+      html: `
+        <p>Hello,</p>
+        <p>You have received a new enquiry through the Royal Blue PG website. The details are as follows:</p>
+        <ul>
+          <li><strong>Name:</strong> ${escapeHtml(enquiry.fullName)}</li>
+          <li><strong>Email:</strong> ${escapeHtml(enquiry.email)}</li>
+          <li><strong>Phone Number:</strong> ${escapeHtml(enquiry.phone)}</li>
+          <li><strong>College Name:</strong> ${escapeHtml(enquiry.college || 'N/A')}</li>
+          <li><strong>Additional Message:</strong> ${escapeHtml(enquiry.message || 'N/A')}</li>
+        </ul>
+        <p>Please review the enquiry and contact the customer at your earliest convenience.</p>
+        <p>Best Regards,<br/>Royal Blue PG Website<br/><em>Automated Enquiry Notification.</em></p>
+      `,
+    }).catch((emailError) => console.error('Email notification failed:', emailError.message));
 
     res.status(201).json({ success: true, message: 'Enquiry submitted successfully', data: enquiry });
   } catch (error) {
