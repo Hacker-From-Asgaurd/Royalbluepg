@@ -9,32 +9,26 @@ app.use(cors({ origin: process.env.CLIENT_URL || true, credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/api/debug', async (req, res) => {
-  try {
-    if (mongoose.connection.readyState !== 1) {
-      await mongoose.connect(process.env.MONGO_URI, {
-        serverSelectionTimeoutMS: 20000,
-        connectTimeoutMS: 20000,
-      });
-    }
-    res.json({ state: mongoose.connection.readyState, hasUri: !!process.env.MONGO_URI });
-  } catch (err) {
-    res.json({ error: err.message, hasUri: !!process.env.MONGO_URI, uriStart: process.env.MONGO_URI?.substring(0, 40) });
-  }
-});
+// Connect once at module load — Vercel reuses warm instances
+const dbPromise = mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 20000,
+  connectTimeoutMS: 20000,
+}).catch(err => console.error('MongoDB connection error:', err.message));
 
 app.use(async (req, res, next) => {
   try {
+    await dbPromise;
     if (mongoose.connection.readyState !== 1) {
-      await mongoose.connect(process.env.MONGO_URI, {
-        serverSelectionTimeoutMS: 20000,
-        connectTimeoutMS: 20000,
-      });
+      return res.status(500).json({ success: false, message: 'Database not connected' });
     }
     next();
   } catch (err) {
     res.status(500).json({ success: false, message: 'Database connection failed: ' + err.message });
   }
+});
+
+app.get('/api/debug', (req, res) => {
+  res.json({ state: mongoose.connection.readyState, hasUri: !!process.env.MONGO_URI });
 });
 
 app.use('/api/auth',         require('../royal-blue-main/server/routes/authRoutes'));
