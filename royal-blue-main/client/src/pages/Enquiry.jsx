@@ -64,7 +64,7 @@ const Enquiry = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="p-12 text-center"
+              className="p-8 md:p-12 text-center"
             >
               <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <FaCheckCircle className="text-6xl text-green-500" />
@@ -78,8 +78,8 @@ const Enquiry = () => {
               </button>
             </motion.div>
           ) : (
-            <div className="p-8 md:p-12">
-              <form onSubmit={formik.handleSubmit} className="space-y-6">
+            <div className="p-5 md:p-8 lg:p-12">
+              <form onSubmit={formik.handleSubmit} className="space-y-5">
                 
                 <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-100 dark:border-dark-border text-gray-800 dark:text-white">
                   Personal Information
@@ -164,7 +164,7 @@ const Enquiry = () => {
                   {formik.touched.privacyPolicy && formik.errors.privacyPolicy && <div className="text-red-500 text-xs mt-1 ml-7">{formik.errors.privacyPolicy}</div>}
                 </div>
 
-                <div className="flex gap-4 mt-8 pt-8 border-t border-gray-100 dark:border-dark-border">
+                <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t border-gray-100 dark:border-dark-border">
                   <button
                     type="submit"
                     disabled={formik.isSubmitting}
@@ -175,7 +175,7 @@ const Enquiry = () => {
                   <button
                     type="button"
                     onClick={formik.handleReset}
-                    className="btn-outline flex-[0.3]"
+                    className="btn-outline sm:flex-[0.3]"
                   >
                     Reset
                   </button>

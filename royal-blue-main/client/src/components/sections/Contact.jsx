@@ -69,11 +69,11 @@ const Contact = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-100 dark:border-dark-border">
-                <Link to="/enquiry" className="btn-primary flex-1 text-center min-w-[200px]">
+              <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-100 dark:border-dark-border">
+                <Link to="/enquiry" className="btn-primary flex-1 text-center">
                   Submit Enquiry
                 </Link>
-                <a href="tel:+919923805090" className="btn-outline flex-1 text-center min-w-[200px]">
+                <a href="tel:+919923805090" className="btn-outline flex-1 text-center">
                   Call Now
                 </a>
               </div>

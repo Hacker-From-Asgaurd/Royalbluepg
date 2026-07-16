@@ -39,7 +39,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-premium"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 md:mb-6 leading-tight drop-shadow-premium"
           >
             ROYAL BLUE <span className="text-accent-500">PG</span>
           </motion.h1>
@@ -48,7 +48,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-3xl text-gray-200 mb-10 max-w-2xl font-light"
+            className="text-base sm:text-xl md:text-3xl text-gray-200 mb-6 md:mb-10 max-w-2xl font-light"
           >
             Premium Girls Hostel with Safe, Comfortable & Affordable Living.
           </motion.p>
@@ -57,12 +57,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-4 mb-12"
+            className="flex flex-wrap gap-3 mb-8 md:mb-12"
           >
-            <Link to="/enquiry" className="btn-primary text-lg">
+            <Link to="/enquiry" className="btn-primary text-sm md:text-lg flex-1 sm:flex-none text-center">
               Enquire Now
             </Link>
-            <Link to="/gallery" className="btn-glass text-lg">
+            <Link to="/gallery" className="btn-glass text-sm md:text-lg flex-1 sm:flex-none text-center">
               View Gallery
             </Link>
           </motion.div>

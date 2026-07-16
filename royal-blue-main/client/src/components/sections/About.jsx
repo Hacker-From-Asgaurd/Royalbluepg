@@ -19,7 +19,7 @@ const About = () => {
               <img
                 src={aboutImg}
                 alt="About Royal Blue PG"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 to-transparent" />
