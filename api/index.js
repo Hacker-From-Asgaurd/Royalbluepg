@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const mongoose = require('../royal-blue-main/server/node_modules/mongoose');
+const mongoose = require('mongoose');
 
 let cached = global.mongoose;
 if (!cached) cached = global.mongoose = { conn: null, promise: null };
