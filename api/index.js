@@ -50,6 +50,32 @@ app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Royal Blue PG API is running', timestamp: new Date() });
 });
 
+app.get('/api/test-email', async (req, res) => {
+  const nodemailer = require('nodemailer');
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT),
+    secure: false,
+    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    tls: { rejectUnauthorized: false },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000,
+  });
+  try {
+    await transporter.verify();
+    await transporter.sendMail({
+      from: `"Royal Blue PG" <${process.env.SMTP_USER}>`,
+      to: process.env.ADMIN_EMAIL,
+      subject: 'Test Email - Royal Blue PG',
+      html: '<p>Email is working!</p>',
+    });
+    res.json({ success: true, message: `Email sent to ${process.env.ADMIN_EMAIL}`, smtp: process.env.SMTP_HOST, user: process.env.SMTP_USER });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message, smtp: process.env.SMTP_HOST, user: process.env.SMTP_USER });
+  }
+});
+
 app.use(require('../royal-blue-main/server/middleware/errorHandler'));
 
 module.exports = app;
