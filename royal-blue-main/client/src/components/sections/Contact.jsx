@@ -19,7 +19,7 @@ const Contact = () => {
           subtitle="Get in touch with us for room enquiries, availability, or any other questions."
         />
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-start lg:items-center">
           
           {/* Contact Details */}
           <motion.div
@@ -28,17 +28,17 @@ const Contact = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="glass-card p-8 md:p-10">
-              <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white">Get In Touch</h3>
+            <div className="glass-card p-5 md:p-8 lg:p-10">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 dark:text-white">Get In Touch</h3>
               
-              <div className="space-y-6 mb-10">
+              <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
                 {contactInfo.map((info, idx) => (
-                  <div key={idx} className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-dark-bg flex items-center justify-center text-primary-500 shrink-0">
-                      <info.icon size={20} />
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="w-9 h-9 md:w-12 md:h-12 rounded-xl bg-primary-50 dark:bg-dark-bg flex items-center justify-center text-primary-500 shrink-0">
+                      <info.icon size={16} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{info.label}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{info.label}</p>
                       {info.href ? (
                         <a href={info.href} target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-800 dark:text-gray-200 hover:text-primary-500 transition-colors">
                           {info.value}
@@ -50,13 +50,13 @@ const Contact = () => {
                   </div>
                 ))}
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-dark-bg flex items-center justify-center text-primary-500 shrink-0 mt-1">
-                    <FaMapMarkerAlt size={20} />
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 md:w-12 md:h-12 rounded-xl bg-primary-50 dark:bg-dark-bg flex items-center justify-center text-primary-500 shrink-0 mt-1">
+                    <FaMapMarkerAlt size={16} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Address</p>
-                    <p className="font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Address</p>
+                    <p className="font-semibold text-sm md:text-base text-gray-800 dark:text-gray-200 mb-1">
                       D Y, PATIL MEDICAL, 458/2554, COLLEGE ROAD, <br />
                       behind APJ ABDUL KAMAL GARDEN, Sant Tukaram Nagar, Pimpri Colony, <br />
                       Pimpri-Chinchwad, Maharashtra 411018 
@@ -86,7 +86,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="h-full min-h-[400px] lg:min-h-[500px]"
+            className="h-[300px] sm:h-[400px] lg:h-[550px]"
           >
             <div className="w-full h-full rounded-2xl overflow-hidden glass-card shadow-lg p-2">
               {/* Replace src with actual google maps embed URL in production */}

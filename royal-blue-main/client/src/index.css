@@ -169,6 +169,14 @@
     text-wrap: balance;
   }
 
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Loading skeleton */
   .skeleton {
     @apply animate-pulse bg-gray-200 dark:bg-dark-border rounded;

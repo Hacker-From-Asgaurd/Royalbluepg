@@ -121,18 +121,10 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm">
-              
-            </p>
-            <div className="flex items-center gap-6 text-sm text-gray-500">
-            </div>
-            <p className="text-gray-500 text-xs flex items-center gap-1">
-              Made with <FaHeart className="text-red-500 text-xs" /> Team Diamond
-            </p>
-          </div>
+        <div className="border-t border-white/10 pt-6 flex justify-center">
+          <p className="text-gray-500 text-xs flex items-center gap-1">
+            Made with <FaHeart className="text-red-500 text-xs" /> Team Diamond
+          </p>
         </div>
       </div>
     </footer>
