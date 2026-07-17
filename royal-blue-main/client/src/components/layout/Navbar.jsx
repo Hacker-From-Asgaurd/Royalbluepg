@@ -55,10 +55,10 @@ const Navbar = () => {
             />
             <div>
               <h1 className="text-xl font-bold tracking-tight text-gray-900">
-                Royal Blue
+                ROYAL BLUE PG
               </h1>
               <p className="text-xs -mt-1 text-gray-700">
-                Premium PG
+                
               </p>
             </div>
           </Link>

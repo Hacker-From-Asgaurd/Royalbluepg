@@ -8,10 +8,9 @@ import { FaStar, FaQuoteLeft } from 'react-icons/fa';
 import SectionHeader from '../ui/SectionHeader';
 
 const MOCK_TESTIMONIALS = [
-  { _id: '1', name: 'Priya Sharma', college: 'Delhi University', rating: 5, review: 'Amazing PG! The rooms are clean, AC works perfectly, and the staff is very helpful. I feel completely safe here. Best decision I made for my college accommodation!' },
-  { _id: '2', name: 'Ananya Patel', college: 'BITS Pilani', rating: 5, review: 'Royal Blue PG is like a home away from home. The facilities are top-notch, WiFi is fast, and the biometric entry makes me feel secure. Highly recommended!' },
-  { _id: '3', name: 'Sneha Reddy', college: 'Working Professional', rating: 4, review: 'Living here has been a great experience. The kitchen is well-maintained, rooms are spacious, and the location is very convenient. The management is professional and responsive.' },
-  { _id: '4', name: 'Kavya Singh', college: 'IIT Delhi', rating: 5, review: 'I was worried about finding safe accommodation in a new city, but Royal Blue PG exceeded all my expectations. The CCTV coverage and 24/7 security give my parents peace of mind too!' },
+  { _id: '1', name: 'Marcus Tribhuvan', rating: 5, review: 'This is one of the finest PGs for girls. Superb Amenities with highest quality service from the owner Prasad. Communication and People treatment is of top rated. Peaceful area and hospitality at it is very best. Simply the best in entire Pimpri Chinchwad.' },
+  { _id: '2', name: 'Nutan Shewale', college: 'Dr D Y Patil', rating: 5, review: 'The location is convenient, with colleges, shops, and public transport nearby. Overall, it is an excellent place to stay for students and working professionals.' },
+  { _id: '3', name: 'Anushka Thorat', college: 'Dr D Y Patil', rating: 4, review: 'The rooms are clean, spacious, and well-maintained. The atmosphere is safe and comfortable, especially for girls.' },
 ];
 
 const Testimonials = () => {
