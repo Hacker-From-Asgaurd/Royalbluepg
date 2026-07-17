@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { FiSun, FiMoon } from 'react-icons/fi';
-import { useTheme } from '../../context/ThemeContext';
 import { useScrollPosition } from '../../hooks/useAnimations';
 import logoImage from '../../assets/images/logo.jpeg';
 
@@ -16,7 +14,6 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { darkMode, toggleDarkMode } = useTheme();
   const { isScrolled } = useScrollPosition();
   const location = useLocation();
 
@@ -82,15 +79,6 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            {/* Dark mode toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className="p-2.5 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
-            </button>
-
             {/* CTA Button */}
             <Link
               to="/enquiry"
@@ -118,7 +106,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white/95 dark:bg-dark-bg/95 backdrop-blur-xl border-t border-gray-100 dark:border-dark-border"
+            className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100"
           >
             <div className="container-custom py-4 space-y-1">
               {navLinks.map((link, i) => (
@@ -129,7 +117,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="block px-4 py-3 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-card hover:text-primary-600 font-medium transition-all"
+                  className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-primary-50 hover:text-primary-600 font-medium transition-all"
                 >
                   {link.name}
                 </motion.a>
