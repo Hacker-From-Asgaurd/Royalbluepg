@@ -103,7 +103,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <span className="text-accent-400 mt-0.5">📍</span>
-                D Y, PATIL MEDICAL, 458/2554, COLLEGE ROAD, behind APJ ABDUL KAMAL GARDEN, Sant Tukaram Nagar, Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018
+                ROYAL BLUE PG, 458/2554, COLLEGE ROAD, behind APJ ABDUL KAMAL GARDEN, Sant Tukaram Nagar, Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-accent-400">📞</span>

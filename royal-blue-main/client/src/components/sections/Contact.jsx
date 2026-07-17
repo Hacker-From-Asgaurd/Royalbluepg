@@ -57,7 +57,7 @@ const Contact = () => {
                   <div>
                     <p className="text-xs text-gray-500 dark:text-gray-400">Address</p>
                     <p className="font-semibold text-sm md:text-base text-gray-800 dark:text-gray-200 mb-1">
-                      D Y, PATIL MEDICAL, 458/2554, COLLEGE ROAD, <br />
+                      ROYAL BLUE PG, 458/2554, COLLEGE ROAD, <br />
                       behind APJ ABDUL KAMAL GARDEN, Sant Tukaram Nagar, Pimpri Colony, <br />
                       Pimpri-Chinchwad, Maharashtra 411018 
                     </p>
@@ -71,7 +71,7 @@ const Contact = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-100 dark:border-dark-border">
                 <Link to="/enquiry" className="btn-primary flex-1 text-center">
-                  Submit Enquiry
+                  Enquire now
                 </Link>
                 <a href="tel:+919923805090" className="btn-outline flex-1 text-center">
                   Call Now
