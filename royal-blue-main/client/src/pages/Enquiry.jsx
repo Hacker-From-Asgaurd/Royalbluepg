@@ -15,7 +15,6 @@ const enquirySchema = Yup.object().shape({
   college: Yup.string(),
   occupation: Yup.string().required('Please select occupation'),
   message: Yup.string(),
-  privacyPolicy: Yup.boolean().oneOf([true], 'You must accept the privacy policy'),
 });
 
 const Enquiry = () => {
@@ -24,7 +23,7 @@ const Enquiry = () => {
   const formik = useFormik({
     initialValues: {
       fullName: '', phone: '', email: '', college: '',
-      occupation: 'Student', message: '', privacyPolicy: false
+      occupation: 'Student', message: '',
     },
     validationSchema: enquirySchema,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
@@ -149,22 +148,7 @@ const Enquiry = () => {
                   ></textarea>
                 </div>
 
-                <div className="mt-8">
-                  <label className="flex items-start gap-3 cursor-pointer group">
-                    <input
-                      type="checkbox"
-                      name="privacyPolicy"
-                      className="mt-1 w-4 h-4 text-primary-600 rounded focus:ring-primary-500 border-gray-300"
-                      {...formik.getFieldProps('privacyPolicy')}
-                    />
-                    <span className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors">
-                      I agree to the <a href="/privacy" className="text-primary-500 hover:underline">Privacy Policy</a> and consent to being contacted regarding this enquiry.
-                    </span>
-                  </label>
-                  {formik.touched.privacyPolicy && formik.errors.privacyPolicy && <div className="text-red-500 text-xs mt-1 ml-7">{formik.errors.privacyPolicy}</div>}
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t border-gray-100 dark:border-dark-border">
+                <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t border-gray-100">
                   <button
                     type="submit"
                     disabled={formik.isSubmitting}

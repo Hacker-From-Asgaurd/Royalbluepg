@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaHeart, FaBuilding } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const quickLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/#about' },
   { name: 'Amenities', href: '/#amenities' },
-  { name: 'Gallery', href: '/gallery' },
   { name: 'Contact', href: '/#contact' },
 ];
 
@@ -14,7 +13,7 @@ const amenityLinks = ['AC Rooms', 'WiFi', 'CCTV', 'Power Backup', 'Kitchen', 'Da
 
 const socialLinks = [
   { icon: FaInstagram, href: '#', label: 'Instagram', color: 'hover:text-pink-500' },
-  { icon: FaFacebook, href: '#', label: 'Facebook', color: 'hover:text-blue-500' },
+  { icon: FaBuilding, href: 'https://www.magicbricks.com/propertyDetail/royal-blue-pg-pimpri-in-pune&pgid=4d42353436393933677261646532', label: 'MagicBricks', color: 'hover:text-red-400' },
   { icon: FaWhatsapp, href: 'https://wa.me/919923805090', label: 'WhatsApp', color: 'hover:text-green-500' },
   { icon: FaEnvelope, href: 'mailto:kanhakanha1202@gmail.com', label: 'Email', color: 'hover:text-red-400' },
 ];
