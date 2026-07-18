@@ -23,8 +23,7 @@ exports.submitEnquiry = async (req, res) => {
   try {
     const enquiry = await Enquiry.create(req.validatedBody || req.body);
 
-    const contactContent = await Content.findOne({ section: 'contact', key: 'email' });
-    const recipientEmail = contactContent?.value || process.env.ADMIN_EMAIL;
+    const recipientEmail = process.env.ADMIN_EMAIL;
 
     // Await email so Vercel doesn't shut down before it sends
     try {
