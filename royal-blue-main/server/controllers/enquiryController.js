@@ -1,6 +1,5 @@
 const Enquiry = require('../models/Enquiry');
 const Content = require('../models/Content');
-const transporter = require('../config/email');
 
 const escapeHtml = (value) => String(value ?? '')
   .replace(/&/g, '&amp;')
@@ -29,7 +28,20 @@ exports.submitEnquiry = async (req, res) => {
 
     // Await email so Vercel doesn't shut down before it sends
     try {
-      await transporter.sendMail({
+      const nodemailer = require('nodemailer');
+      const getTransporter = () => nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: parseInt(process.env.SMTP_PORT),
+        secure: false,
+        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        tls: { rejectUnauthorized: false },
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 10000,
+      });
+
+      // Email to owner
+      await getTransporter().sendMail({
         from: `"Royal Blue PG" <${process.env.SMTP_USER}>`,
         to: recipientEmail,
         subject: `New Enquiry from ${enquiry.fullName}`,
@@ -45,6 +57,22 @@ exports.submitEnquiry = async (req, res) => {
           </ul>
           <p>Please review the enquiry and contact the customer at your earliest convenience.</p>
           <p>Best Regards,<br/>Royal Blue PG Website<br/><em>Automated Enquiry Notification.</em></p>
+        `,
+      });
+
+      // Auto-reply to enquirer
+      await getTransporter().sendMail({
+        from: `"Royal Blue PG" <${process.env.SMTP_USER}>`,
+        to: enquiry.email,
+        subject: `Thank you for your enquiry - Royal Blue PG`,
+        html: `
+          <p>Dear ${escapeHtml(enquiry.fullName)},</p>
+          <p>Thank you for reaching out! 🎉</p>
+          <p>We've received your enquiry successfully. We will get back to you as soon as possible.</p>
+          <p>If your enquiry is urgent, please feel free to contact us directly using the details provided on our website.</p>
+          <p>We appreciate your interest and look forward to connecting with you!</p>
+          <br/>
+          <p>Best Regards,<br/><strong>Royal Blue PG Team</strong><br/>📞 +91 99238 05090</p>
         `,
       });
     } catch (emailError) {
