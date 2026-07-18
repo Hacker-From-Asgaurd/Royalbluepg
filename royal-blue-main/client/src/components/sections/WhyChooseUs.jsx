@@ -4,7 +4,7 @@ import ScrollStack, { ScrollStackItem } from '../ui/ScrollStack';
 
 const reasons = [
   { title: 'Safe Environment', icon: FaShieldAlt, desc: 'Exclusively for women with strict security protocols and 24×7 monitoring.' },
-  { title: 'Affordable Pricing', icon: FaRupeeSign, desc: 'Premium facilities at budget-friendly rates — no hidden charges.' },
+  { title: 'Affordable Pricing', icon: FaRupeeSign, desc: 'Premium facilities at budget-friendly rates with no hidden charges.' },
   { title: 'Peaceful Atmosphere', icon: FaMoon, desc: 'Quiet study spaces and noise-free zones for focused living.' },
   { title: 'Daily Cleaning & Power Backup', icon: FaBroom, desc: 'Professional housekeeping every day with uninterrupted 24×7 power supply.' },
   { title: 'High Speed WiFi & Biometric Entry', icon: FaWifi, desc: 'Fast reliable internet and access-controlled biometric entry for residents only.' },
