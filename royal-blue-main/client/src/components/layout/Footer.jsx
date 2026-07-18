@@ -16,7 +16,7 @@ const socialLinks = [
   { icon: FaInstagram, href: '#', label: 'Instagram', color: 'hover:text-pink-500' },
   { icon: FaFacebook, href: '#', label: 'Facebook', color: 'hover:text-blue-500' },
   { icon: FaWhatsapp, href: 'https://wa.me/919923805090', label: 'WhatsApp', color: 'hover:text-green-500' },
-  { icon: FaEnvelope, href: 'mailto:kanhakanha1202@gamil.com', label: 'Email', color: 'hover:text-red-400' },
+  { icon: FaEnvelope, href: 'mailto:kanhakanha1202@gmail.com', label: 'Email', color: 'hover:text-red-400' },
 ];
 
 const Footer = () => {
@@ -111,7 +111,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-accent-400">✉️</span>
-                <a href="mailto:kanhakanha1202@gamil.com" className="hover:text-accent-400 transition-colors">kanhakanha1202@gamil.com</a>
+                <a href="mailto:kanhakanha1202@gmail.com" className="hover:text-accent-400 transition-colors">kanhakanha1202@gmail.com</a>
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-accent-400">🕐</span>
