@@ -14,6 +14,7 @@ const amenityLinks = ['AC Rooms', 'WiFi', 'CCTV', 'Power Backup', 'Kitchen', 'Da
 const socialLinks = [
   { icon: FaInstagram, href: 'https://www.instagram.com/royalbluepg?igsh=OXNhd2Q2azJ0bDlr', label: 'Instagram', color: 'hover:text-pink-500' },
   { icon: FaBuilding, href: 'https://www.magicbricks.com/propertyDetail/royal-blue-pg-pimpri-in-pune&pgid=4d42353436393933677261646532', label: 'MagicBricks', color: 'hover:text-red-400' },
+  { icon: FaBuilding, href: 'https://www.nobroker.in/property/pg/pg-hostel-for-girls-in-pimpri-colony-pune-for-rs-12000/8aa9c5239d997fec019d99ae46850d5e/detail?nbRef=dXNlcklkPThhOWZhYTBmOTQ1ZmNlZjAwMTk0NjMzNmE3MmE0OWVjJnNoYXJlZEF0PTE3ODQ0NjIxODgzODQ=', label: 'NoBroker', color: 'hover:text-orange-400' },
   { icon: FaWhatsapp, href: 'https://wa.me/919923805090', label: 'WhatsApp', color: 'hover:text-green-500' },
   { icon: FaEnvelope, href: 'mailto:prasadchavanlic@gmail.com', label: 'Email', color: 'hover:text-red-400' },
 ];

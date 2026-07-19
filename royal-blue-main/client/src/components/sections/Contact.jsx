@@ -11,10 +11,10 @@ const contactInfo = [
 ];
 
 const nearbyPlaces = [
-  { icon: FaMapMarkerAlt, label: 'Dr. D Y Patil Engineering College', distance: '450 m' },
+  { icon: FaMapMarkerAlt, label: 'Dr. D Y Patil Medical College', distance: '160 m' },
   { icon: FaSubway, label: 'Sant Tukaram Nagar Metro Station', distance: '1.4 km' },
   { icon: FaBus, label: 'Vallabh Nagar Bus Stand', distance: '1.3 km' },
-  { icon: FaMapMarkerAlt, label: 'Dr. D Y Patil Medical College', distance: '160 m' },
+  { icon: FaMapMarkerAlt, label: 'Dr. D Y Patil Engineering College', distance: '450 m' },
 ];
 
 const Contact = () => {
