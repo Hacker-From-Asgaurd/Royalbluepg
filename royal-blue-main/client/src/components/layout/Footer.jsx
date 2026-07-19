@@ -113,8 +113,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex justify-center">
-          <p className="text-gray-500 text-xs flex items-center gap-1">
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-gray-500 text-xs">
+            © {new Date().getFullYear()} Royal Blue PG. All Rights Reserved.
+          </p>
+          <p className="text-gray-600 text-xs flex items-center gap-1">
             Made with <FaHeart className="text-red-500 text-xs" /> Team Diamond
           </p>
         </div>

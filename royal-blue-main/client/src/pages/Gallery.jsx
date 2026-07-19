@@ -14,11 +14,8 @@ import build2 from '../assets/images/build 2.jpeg';
 import build3 from '../assets/images/build 3.jpeg';
 import build4 from '../assets/images/build 4.jpeg';
 import build5 from '../assets/images/build 5.jpeg';
-import build6 from '../assets/images/build 6.jpeg';
-import build7 from '../assets/images/build 7.jpeg';
 import build8 from '../assets/images/build 8.jpeg';
 import build9 from '../assets/images/build 9.jpeg';
-import build10 from '../assets/images/build 10.jpeg';
 import build11 from '../assets/images/build 11.jpeg';
 import build12 from '../assets/images/build 12.jpeg';
 import kitchen1 from '../assets/images/kitchen 1.jpeg';
@@ -50,11 +47,8 @@ const ALL_IMAGES = [
   { id: 22, src: room5, category: 'Rooms', caption: 'Room' },
   { id: 23, src: room6, category: 'Rooms', caption: 'Room' },
   { id: 5, src: build5, category: 'Building', caption: 'Building' },
-  { id: 6, src: build6, category: 'Building', caption: 'Building' },
-  { id: 7, src: build7, category: 'Building', caption: 'Building' },
   { id: 8, src: build8, category: 'Building', caption: 'Building' },
   { id: 9, src: build9, category: 'Building', caption: 'Building' },
-  { id: 10, src: build10, category: 'Building', caption: 'Building' },
   { id: 11, src: build11, category: 'Building', caption: 'Building' },
   { id: 12, src: build12, category: 'Building', caption: 'Building' },
 ];
@@ -66,7 +60,7 @@ const Gallery = () => {
   
   // Filter images based on selected category
   const baseImages = activeCategory === 'All' ? ALL_IMAGES : activeCategory === 'Video' ? [] : ALL_IMAGES.filter(img => img.category === activeCategory);
-  const showVideo = activeCategory === 'All' || activeCategory === 'Video' || activeCategory === 'Washroom';
+  const showVideo = activeCategory === 'All' || activeCategory === 'Video';
 
   // Build mixed list: for All, insert video at position 9 (index 8)
   const mixedList = (() => {
