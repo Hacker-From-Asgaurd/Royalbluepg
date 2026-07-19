@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const contactInfo = [
   { icon: FaPhoneAlt, label: 'Call Us', value: '+91 99238 05090', href: 'tel:+919923805090' },
   { icon: FaWhatsapp, label: 'WhatsApp', value: '+91 99238 05090', href: 'https://wa.me/919923805090' },
-  { icon: FaEnvelope, label: 'Email Us', value: 'kanhakanha1202@gmail.com', href: 'mailto:kanhakanha1202@gmail.com' },
+  { icon: FaEnvelope, label: 'Email Us', value: 'prasadchavanlic@gmail.com', href: 'mailto:prasadchavanlic@gmail.com' },
   { icon: FaClock, label: 'Working Hours', value: 'Mon - Sat: 9:00 AM - 7:00 PM', href: null },
 ];
 

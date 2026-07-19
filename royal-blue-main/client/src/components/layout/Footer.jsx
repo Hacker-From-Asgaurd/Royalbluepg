@@ -12,10 +12,10 @@ const quickLinks = [
 const amenityLinks = ['AC Rooms', 'WiFi', 'CCTV', 'Power Backup', 'Kitchen', 'Daily Cleaning'];
 
 const socialLinks = [
-  { icon: FaInstagram, href: '#', label: 'Instagram', color: 'hover:text-pink-500' },
+  { icon: FaInstagram, href: 'https://www.instagram.com/royalbluepg?igsh=OXNhd2Q2azJ0bDlr', label: 'Instagram', color: 'hover:text-pink-500' },
   { icon: FaBuilding, href: 'https://www.magicbricks.com/propertyDetail/royal-blue-pg-pimpri-in-pune&pgid=4d42353436393933677261646532', label: 'MagicBricks', color: 'hover:text-red-400' },
   { icon: FaWhatsapp, href: 'https://wa.me/919923805090', label: 'WhatsApp', color: 'hover:text-green-500' },
-  { icon: FaEnvelope, href: 'mailto:kanhakanha1202@gmail.com', label: 'Email', color: 'hover:text-red-400' },
+  { icon: FaEnvelope, href: 'mailto:prasadchavanlic@gmail.com', label: 'Email', color: 'hover:text-red-400' },
 ];
 
 const Footer = () => {
@@ -26,15 +26,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">RB</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Royal Blue PG</h3>
-                <p className="text-accent-400 text-xs">Premium Girls Hostel</p>
-              </div>
-            </div>
+            <h3 className="text-xl font-bold mb-1">Royal Blue PG</h3>
+            <p className="text-accent-400 text-xs mb-4">Premium Girls Hostel</p>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Premium accommodation exclusively for girls. Safe, comfortable, and affordable living with modern amenities.
             </p>
@@ -106,11 +99,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-accent-400">📞</span>
-                <a href="tel:+919876543210" className="hover:text-accent-400 transition-colors">+91 98765 43210</a>
+                <a href="tel:+919923805090" className="hover:text-accent-400 transition-colors">+91 99238 05090</a>
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-accent-400">✉️</span>
-                <a href="mailto:kanhakanha1202@gmail.com" className="hover:text-accent-400 transition-colors">kanhakanha1202@gmail.com</a>
+                <a href="mailto:prasadchavanlic@gmail.com" className="hover:text-accent-400 transition-colors">prasadchavanlic@gmail.com</a>
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-accent-400">🕐</span>

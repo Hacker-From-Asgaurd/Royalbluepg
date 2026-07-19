@@ -2,15 +2,16 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SectionHeader from '../ui/SectionHeader';
 
-import kitchenImg from '../../assets/images/kitchen.png';
-import washroomImg from '../../assets/images/washroom.png';
-import aboutImg from '../../assets/images/build.jpeg';
+import kitchenImg from '../../assets/images/kitchen 1.jpeg';
+import washroomImg from '../../assets/images/wash 1.jpeg';
+import buildImg from '../../assets/images/build 1.jpeg';
+import roomImg from '../../assets/images/room 1.jpeg';
 
 const images = [
-  { id: 1, src: kitchenImg, alt: 'Modern Kitchen', span: 'col-span-2 row-span-2' },
-  { id: 2, src: washroomImg, alt: 'Clean Washroom', span: 'col-span-1 row-span-1' },
-  { id: 3, src: aboutImg, alt: 'Building View', span: 'col-span-1 row-span-1' },
-  { id: 4, src: aboutImg, alt: 'Study Area', span: 'col-span-2 row-span-1' },
+  { id: 1, src: buildImg, alt: 'Building View', span: 'col-span-2 row-span-2' },
+  { id: 2, src: kitchenImg, alt: 'Modern Kitchen', span: 'col-span-1 row-span-1' },
+  { id: 3, src: washroomImg, alt: 'Clean Washroom', span: 'col-span-1 row-span-1' },
+  { id: 4, src: roomImg, alt: 'Comfortable Room', span: 'col-span-2 row-span-1' },
 ];
 
 const GalleryPreview = () => {

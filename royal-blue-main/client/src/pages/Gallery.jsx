@@ -1,45 +1,84 @@
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import LightGallery from 'lightgallery/react';
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
+import video1 from '../assets/images/video 1.mp4';
 
 import heroBg from '../assets/images/hero-bg.jpeg';
-import image1 from '../assets/images/1.jpeg';
-import image2 from '../assets/images/2.jpeg';
-import image3 from '../assets/images/3.jpeg';
-import image4 from '../assets/images/4.jpeg';
-import image5 from '../assets/images/5.jpeg';
-import image6 from '../assets/images/6.jpeg';
-import image7 from '../assets/images/7.jpeg';
-import image8 from '../assets/images/8.jpeg';
-import image9 from '../assets/images/9.jpeg';
+import build1 from '../assets/images/build 1.jpeg';
+import build2 from '../assets/images/build 2.jpeg';
+import build3 from '../assets/images/build 3.jpeg';
+import build4 from '../assets/images/build 4.jpeg';
+import build5 from '../assets/images/build 5.jpeg';
+import build6 from '../assets/images/build 6.jpeg';
+import build7 from '../assets/images/build 7.jpeg';
+import build8 from '../assets/images/build 8.jpeg';
+import build9 from '../assets/images/build 9.jpeg';
+import build10 from '../assets/images/build 10.jpeg';
+import build11 from '../assets/images/build 11.jpeg';
+import build12 from '../assets/images/build 12.jpeg';
+import kitchen1 from '../assets/images/kitchen 1.jpeg';
+import kitchen2 from '../assets/images/kitchen 2.jpeg';
+import kitchen3 from '../assets/images/kitchen 3.jpeg';
+import wash1 from '../assets/images/wash 1.jpeg';
+import wash2 from '../assets/images/wash 2.jpeg';
+import room1 from '../assets/images/room 1.jpeg';
+import room2 from '../assets/images/room 2.jpeg';
+import room3 from '../assets/images/room 3.jpeg';
+import room4 from '../assets/images/room 4.jpeg';
+import room5 from '../assets/images/room 5.jpeg';
+import room6 from '../assets/images/room 6.jpeg';
 
-// Mock full gallery data
 const ALL_IMAGES = [
-  { id: 1, src: image1, category: 'Rooms', caption: 'Room Image 1' },
-  { id: 2, src: image2, category: 'Rooms', caption: 'Room Image 2' },
-  { id: 3, src: image3, category: 'Washroom', caption: 'Washroom Image 3' },
-  { id: 4, src: image4, category: 'Washroom', caption: 'Washroom Image 4' },
-  { id: 5, src: image5, category: 'Rooms', caption: 'Room Image 5' },
-  { id: 6, src: image6, category: 'Rooms', caption: 'Room Image 6' },
-  { id: 7, src: image7, category: 'Rooms', caption: 'Room Image 7' },
-  { id: 8, src: image8, category: 'Building', caption: 'Building Image 8' },
-  { id: 9, src: image9, category: 'Building', caption: 'Building Image 9' },
+  { id: 1, src: build1, category: 'Building', caption: 'Building' },
+  { id: 2, src: build2, category: 'Building', caption: 'Building' },
+  { id: 3, src: build3, category: 'Building', caption: 'Building' },
+  { id: 4, src: build4, category: 'Building', caption: 'Building' },
+  { id: 13, src: kitchen1, category: 'Kitchen', caption: 'Kitchen' },
+  { id: 14, src: kitchen2, category: 'Kitchen', caption: 'Kitchen' },
+  { id: 15, src: kitchen3, category: 'Kitchen', caption: 'Kitchen' },
+  { id: 16, src: wash1, category: 'Washroom', caption: 'Washroom' },
+  { id: 17, src: wash2, category: 'Washroom', caption: 'Washroom' },
+  { id: 18, src: room1, category: 'Rooms', caption: 'Room' },
+  { id: 19, src: room2, category: 'Rooms', caption: 'Room' },
+  { id: 20, src: room3, category: 'Rooms', caption: 'Room' },
+  { id: 21, src: room4, category: 'Rooms', caption: 'Room' },
+  { id: 22, src: room5, category: 'Rooms', caption: 'Room' },
+  { id: 23, src: room6, category: 'Rooms', caption: 'Room' },
+  { id: 5, src: build5, category: 'Building', caption: 'Building' },
+  { id: 6, src: build6, category: 'Building', caption: 'Building' },
+  { id: 7, src: build7, category: 'Building', caption: 'Building' },
+  { id: 8, src: build8, category: 'Building', caption: 'Building' },
+  { id: 9, src: build9, category: 'Building', caption: 'Building' },
+  { id: 10, src: build10, category: 'Building', caption: 'Building' },
+  { id: 11, src: build11, category: 'Building', caption: 'Building' },
+  { id: 12, src: build12, category: 'Building', caption: 'Building' },
 ];
 
-const CATEGORIES = ['All', 'Rooms', 'Kitchen', 'Washroom', 'Building', 'Study Area'];
+const CATEGORIES = ['All', 'Building', 'Rooms', 'Kitchen', 'Washroom', 'Video'];
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   
   // Filter images based on selected category
-  const filteredImages = activeCategory === 'All' 
-    ? ALL_IMAGES 
-    : ALL_IMAGES.filter(img => img.category === activeCategory);
+  const baseImages = activeCategory === 'All' ? ALL_IMAGES : activeCategory === 'Video' ? [] : ALL_IMAGES.filter(img => img.category === activeCategory);
+  const showVideo = activeCategory === 'All' || activeCategory === 'Video' || activeCategory === 'Washroom';
+
+  // Build mixed list: for All, insert video at position 9 (index 8)
+  const mixedList = (() => {
+    if (!showVideo) return baseImages.map(img => ({ ...img, type: 'image' }));
+    const items = baseImages.map(img => ({ ...img, type: 'image' }));
+    const videoItem = { id: 'video', type: 'video' };
+    if (activeCategory === 'All') {
+      items.splice(8, 0, videoItem);
+      return items;
+    }
+    return [...items, videoItem];
+  })();
 
   const onInit = useCallback((detail) => {
     if (detail) {
@@ -55,7 +94,7 @@ const Gallery = () => {
       >
         <div className="overlay-gradient" />
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Photo Gallery</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Gallery</h1>
           <p className="text-gray-200">Explore the premium facilities at Royal Blue PG</p>
         </div>
       </div>
@@ -88,23 +127,36 @@ const Gallery = () => {
           download={false}
           elementClassNames="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
         >
-          <AnimatePresence>
-            {filteredImages.map((img) => (
-              <motion.a
-                key={img.id}
-                href={img.src}
+          {mixedList.map((item, index) =>
+            item.type === 'video' ? (
+              <motion.div
+                key="video"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.4 }}
-                layout
-                data-src={img.src}
-                data-sub-html={`<h4>${img.caption}</h4><p>${img.category}</p>`}
+                className="relative group rounded-2xl overflow-hidden glass-card shadow-sm hover:shadow-xl transition-all duration-300 aspect-square w-full"
+              >
+                <video
+                  src={video1}
+                  controls
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            ) : (
+              <motion.a
+                key={item.id}
+                href={item.src}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.03 }}
+                data-src={item.src}
+                data-sub-html={`<h4>${item.caption}</h4><p>${item.category}</p>`}
                 className="block relative group rounded-2xl overflow-hidden glass-card shadow-sm hover:shadow-xl transition-all duration-300 aspect-square w-full"
               >
                 <img
-                  src={img.src}
-                  alt={img.caption}
+                  src={item.src}
+                  alt={item.caption}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
                 />
@@ -114,13 +166,13 @@ const Gallery = () => {
                   </span>
                 </div>
               </motion.a>
-            ))}
-          </AnimatePresence>
+            )
+          )}
         </LightGallery>
-        
-        {filteredImages.length === 0 && (
+
+        {mixedList.length === 0 && (
           <div className="text-center py-20 text-gray-500 dark:text-gray-400">
-            No images found for this category.
+            No items found for this category.
           </div>
         )}
       </div>
