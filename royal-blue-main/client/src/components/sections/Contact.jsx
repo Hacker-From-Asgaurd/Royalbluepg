@@ -65,7 +65,7 @@ const Contact = () => {
                     <p className="text-xs text-gray-500">Address</p>
                     <p className="font-semibold text-sm text-gray-800 mb-1">
                       ROYAL BLUE PG, 458/2554, Sant Tukaram Nagar,<br />
-                      behind APJ ABDUL KAMAL GARDEN, Dr D Y Patil Medical College<br />
+                      behind APJ ABDUL KALAM GARDEN, Dr D Y Patil Medical College<br />
                       Road ,Pimpri-Chinchwad, Maharashtra-411018
                     </p>
                     <a href="https://maps.app.goo.gl/QVzSq3EiaJe2cATu9" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary-500 hover:underline">
